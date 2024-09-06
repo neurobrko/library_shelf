@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Shelf</title>
+</head>
+<body>
+    <h1>Library Shelf</h1>
+    <h3>Available books:</h3>
+    <ul>
+        {% for book in books %}
+        <li><b>{{ book.title }}</b> by <b><i>{{ book.author }}</i></b></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

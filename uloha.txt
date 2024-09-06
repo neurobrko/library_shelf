@@ -1,0 +1,40 @@
+1. Úloha - Env Setup:
+
+    nainštalujte python3.12, git a poetry (dá sa aj cez apt/dnf, ale univerzálnejší je za mňa pyenv)
+        ako bonus môžete vytvoriť Makefile
+    vytvorte adresár pre projekt
+    vytvorte a aktivujte virtual env
+    vytvorte pyproject.toml (cez poetry)
+        pridajte sqlalchemy a connexion ako závislosti
+        pre connexion nainštalujte aj extra module swagger-ui
+        prípadne nahraďte connexion za iný modul pre implementáciu API ako napr. flask
+        vytvorte poetry.lock, resp. nainštalujte závislosti do virtual envu
+    nainštalujte si pre-commit
+        nastavte hooky pre trailing-whitespace a end-of-file-fixer
+        ako bonus môžete pridať hooky aj pre ruff, prípadne ruff-format
+    ak nemáte tak si vytvorte github účet
+        inicializujte nový git repozitár vo vytvorenom priečinku
+        pridajte všetky vytvorené súbory okrem vytvoreného virtual envu (ak sa nachádza v projektovom priečinku) a teda virtual env môžete nastaviť, aby ho git ignoroval
+        zmeny nahrajte do github repozitára a pošlite mi link (rovnaký postup môžete zvoliť po dokončení každej úlohy)
+
+2. Úloha - DB
+
+    definujte SQLAlchemy tabuľku "book" so stĺpcami id - PK, title, author - FK, isbn a published_date
+    prípadne si vyberte iný predmet pre tabuľku :)
+    inicializujte databázu (stačí in-memory) a vytvorte definovanú tabuľku
+
+3. Úloha - API
+
+    definujte OpenAPI (Swagger) špecifikáciu pre REST API, zahrňte API endpoint:
+        *pre získanie zoznamu všetkých kníh
+        *pre získanie informácií o konkrétnej knihe
+        *pre pridanie novej knihy
+        *pre upravenie údajov konkrétnej knihy
+        *pre zmazanie knihy
+    ako bonus môžete pridať "check-yaml" hook do pre-commit-u a overiť, že implementovaná špecifikácia je v poriadku
+    inicializuje server cez connexion, ktorý zobrazí definovanú špecifikáciu a cez webový prehliadač overte, že je všetko v poriadku
+
+4. Úloha - Core
+
+    implementujte kód, ktorý prepojí jednotlivé API endpointy s databázou
+    overte, že viete dáta do databázy zapisovať, z nej čítať alebo mazať

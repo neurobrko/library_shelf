@@ -1,0 +1,17 @@
+openapi: 3.0.3
+info:
+  title: Library Book Shelf
+  description: An API for manipulating books on the shelf.
+  version: 1.0.0
+servers:
+  - url: '/api/v1'
+paths:
+  /book:
+    get:
+      operationId: books.list_all
+      tags:
+        - Books
+      summary: List all books on the shelf.
+      responses:
+        200:
+          description: Successfully read books list.
