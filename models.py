@@ -7,7 +7,7 @@ class Book(db.Model):
     title = db.Column(db.String(64))
     author = db.Column(db.String(64))
     isbn = db.Column(db.String(32), unique=True)
-    pub_date = db.Column(db.DateTime)
+    pub_date = db.Column(db.Date)
 
 
 class BookSchema(ma.SQLAlchemyAutoSchema):

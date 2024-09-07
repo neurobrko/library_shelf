@@ -5,6 +5,51 @@ info:
   version: 1.0.0
 servers:
   - url: '/api/v1'
+components:
+  schemas:
+    Book:
+      type: object
+      required:
+        - title
+        - isbn
+      properties:
+        title:
+          type: string
+        author:
+          type: string
+        isbn:
+          type: string
+        pub_date:
+          type: string
+  parameters:
+    title:
+      name: title
+      description: Title of the book
+      in: path
+      required: true
+      schema:
+        type: string
+    isbn:
+      name: isbn
+      description: ISBN of the book
+      in: path
+      required: true
+      schema:
+        type: string
+    author:
+      name: author
+      description: Book author
+      in: path
+      required: true
+      schema:
+        type: string
+    id:
+      name: id
+      description: Unique ID of the book
+      in: path
+      required: true
+      schema:
+        type: integer
 paths:
   /book:
     get:
@@ -15,3 +60,63 @@ paths:
       responses:
         200:
           description: Successfully read books list.
+    post:
+      operationId: books.insert_book
+      tags:
+        - Books
+      summary: Put new book on the shelf.
+      requestBody:
+        description: Book to insert
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+        x-body-name: book
+      responses:
+        201:
+          description: Successfully inserted a book.
+  /book/{title}:
+    get:
+      operationId: books.list_by_title
+      tags:
+        - Books
+      summary: List info about book by title. (May return multiple books!)
+      parameters:
+        - $ref: "#/components/parameters/title"
+      responses:
+        200:
+          description: Successfully read books list by title.
+  /book/isbn/{isbn}:
+    get:
+      operationId: books.list_by_isbn
+      tags:
+        - Books
+      summary: Return info about book by ISBN.
+      parameters:
+        - $ref: "#/components/parameters/isbn"
+      responses:
+        200:
+          description: Successfully read books list by isbn.
+  /book/author/{author}:
+    get:
+      operationId: books.list_by_author
+      tags:
+        - Books
+      summary: Return all books by author.
+      parameters:
+        - $ref: "#/components/parameters/author"
+      responses:
+        200:
+          description: Successfully read book list by author.
+  /book/{id}:
+    delete:
+      operationId: books.delete_book
+      tags:
+        - Books
+      summary: Remove a book from the shelf
+      parameters:
+        - $ref: "#/components/parameters/id"
+      responses:
+        204:
+          description: Successfully removed a book.
