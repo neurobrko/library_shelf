@@ -29,7 +29,7 @@
         * pre získanie zoznamu všetkých kníh
         * pre získanie informácií o konkrétnej knihe
         * pre pridanie novej knihy
-        pre upravenie údajov konkrétnej knihy
+        * pre upravenie údajov konkrétnej knihy
         * pre zmazanie knihy
     ako bonus môžete pridať "check-yaml" hook do pre-commit-u a overiť, že implementovaná špecifikácia je v poriadku
     inicializuje server cez connexion, ktorý zobrazí definovanú špecifikáciu a cez webový prehliadač overte, že je všetko v poriadku

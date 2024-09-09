@@ -21,6 +21,17 @@ components:
           type: string
         pub_date:
           type: string
+    BookUpdate:
+      type: object
+      properties:
+        title:
+          type: string
+        author:
+          type: string
+        isbn:
+          type: string
+        pub_date:
+          type: string
   parameters:
     title:
       name: title
@@ -98,6 +109,22 @@ paths:
       responses:
         200:
           description: Successfully read books list by isbn.
+    put:
+      operationId: books.update_book
+      tags:
+        - Books
+      summary: Upadte book info.
+      parameters:
+        - $ref: "#/components/parameters/isbn"
+      responses:
+        200:
+          description: Successfullly updated a book.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BookUpdate"
+        x-body-name: book
   /book/author/{author}:
     get:
       operationId: books.list_by_author
